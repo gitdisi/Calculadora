@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+
+    <!-- links -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/vars.css">
+
+    <!-- Fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <!-- icones-->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="calculator__container">
+        <header>
+            <section class="icon__container">
+                <div>
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+                <p class="pastLog" id="pastLog"></p>
+            </section>
+        <div>
+                <input type="text" name="Calculadora" id="calculatorInput"
+                value="0" pattern="[0-9\.\(\)\+\-×÷]*">
+            </div>
+        </header>
+
+        <main>
+            <section>
+                <!-- Primeira linha -->
+                <div>
+                    <button id="buttonClear">Clear</button>
+                </div>
+                <div>
+                    <button id="buttonBackspace">Backspace</button>
+                </div>
+                <div>
+                    <button>MDC</button>
+                </div>
+                <div>
+                    <button>MMC</button>
+                </div>
+            </section>
+                
+            <section>
+                <!-- Segunda linha -->
+                <div>
+                    <button class="buttonNumber">1</button>
+                </div>
+                <div>
+                    <button class="buttonNumber">2</button>
+                </div>
+                <div>
+                    <button class="buttonNumber">3</button>
+                </div>
+                <div>
+                    <button class="buttonOperator">÷</button>
+                </div>
+            </section>
+
+            <section>
+                <!-- Terceira linha -->
+                <div>
+                    <button class="buttonNumber">4</button>
+                </div>
+                <div>
+                    <button class="buttonNumber">5</button>
+                </div>
+                <div>
+                    <button class="buttonNumber">6</button>
+                </div>
+                <div>
+                    <button class="buttonOperator">&times</button>
+                </div>
+            </section>
+
+            <section>
+                <!-- Quarta linha -->
+                <div>
+                    <button class="buttonNumber">7</button>
+                </div>
+                <div>
+                    <button class="buttonNumber">8</button>
+                </div>
+                <div>
+                    <button class="buttonNumber">9</button>
+                </div>
+                <div>
+                    <button class="buttonOperator">-</button>
+                </div>
+            </section>
+
+            <section>
+                <!-- Quinta linha -->
+                <div>
+                    <button id="buttonFloat">.</button>
+                </div>
+                <div>
+                    <button class="buttonNumber">0</button>
+                </div>
+                <div>
+                    <button>+/-</button>
+                </div>
+                <div>
+                    <button class="buttonOperator">+</button>
+                </div>
+            </section>
+
+            <section>
+                <!-- Sexta linha -->
+                <div>
+                    <button>(</button>
+                </div>
+                <div>
+                    <button>)</button>
+                </div>
+                <div>
+                    <button id="buttonResult" class="buttonResults">=</button>
+                </div>
+                <div>
+                    <button class="buttonFrog" id="buttonFrog">🐸</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <audio id="ribbitSound" src="./536759__egomassive__frog.ogg" preload="auto"></audio>
+
+    <script src="script/input.js"></script>
+    <script src="script/script.js"></script>
+</body>
+</html>
