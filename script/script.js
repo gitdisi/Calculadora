@@ -7,19 +7,22 @@ const buttonClear = document.getElementById("buttonClear");
 const buttonOperator = document.querySelectorAll(".buttonOperator");
 const pastLog = document.getElementById("pastLog");
 const buttonFloat = document.getElementById("buttonFloat")
+const buttonPorcentagem = document.getElementById("buttonPorcentagem")
+const buttonOpen = document.getElementById("buttonOpen")
 let resultadoExibido = false;
 
 // start Numbers
 buttonNumber.forEach(button => {
     button.addEventListener("click", (event) => {
-        // Coloquei tokens no parâmetro dessa function acima, funcionaria?
         const value = button.textContent;
         if (input.value === "0" || resultadoExibido) {
             // Se o input estiver zerado, substitui o valor
             input.value = value;
             resultadoExibido = false; 
+            console.log(input.value)
         } else {
             input.value += value;
+            console.log(input.value)
         }
     });    
 })
@@ -29,6 +32,8 @@ buttonNumber.forEach(button => {
 buttonBackspace.addEventListener("click", () => {
         if (input.value.length === 1) {
             input.value = 0;
+        } else if (input.value.slice(-1) === " ") {
+            input.value = input.value.slice(0,-2)
         } else {
             input.value = input.value.slice(0,-1);
         }
@@ -45,30 +50,29 @@ buttonOperator.forEach(button => {
     button.addEventListener("click", () => {
         let tokens = input.value.trim().split(" ");
         let currentToken = tokens[tokens.length - 1];
-        console.log(currentToken);
             if (!["+", "-", "×", "÷"].includes(currentToken)) {
                 const operatorValue = button.textContent;
-                tokens.push(` ${operatorValue} `);
-                console.log(currentToken);
+                tokens.push(`${operatorValue} `);
+                // Tem que por um espaço apenas na direita, pois number não faz a separação de elemento
                 input.value = tokens.join(" ");
                 resultadoExibido = false;
+                console.log(input.value)
             }
-            // Bug de varios operadores consecutivos 2 + + + resolvido.
-            // Como? Coloquei a lógica de transformar o input.value em um array
-            // Separado por espaço, depois fiz uma variável "currentoken" que
-            // seleciona o ultimo elemento do array ( o que está sendo editado )
-            // Após isso, eu verificado caso esse ultimo elemento seja um operador
-            // matemático, se não for eu adiciono um novo elemento no array que possui
-            // o conteúdo de texto do operador, depois atualizo o valor do input com
-            // o array novo, que é deletado pelo joins.
     })
 })
 // end operadores numéricos
 
 // start: Lógica de mostrar resultado.
 buttonResult.addEventListener("click", () => {
+    console.log(input.value)
     let tokens = input.value.trim().split(" ");
+    console.log(tokens)
     tokens = tokens.map(token => {
+        if (typeof token === "string" && token.includes("%")) {
+            // Remove o "%" e converte o restante para número, depois divide por 100
+            let valueWithoutPercent = token.replace("%", "");
+            return Number(valueWithoutPercent) * 0.01;
+        }
         return isNaN(token) ? token : Number(token);
     })
     console.log(tokens);
@@ -117,15 +121,37 @@ buttonResult.addEventListener("click", () => {
 
 // End botão de =
 
-// start Lógica do botão de casa decimal, como 1.2
+// start botão de casa decimal
 buttonFloat.addEventListener("click", () => {
     let tokens = input.value.trim().split(" ");
     let currentToken = tokens[tokens.length - 1]
     if (!currentToken.includes(".") && !isNaN(currentToken)) {
         currentToken += ".";
         tokens[tokens.length - 1] = currentToken;
+        input.value = tokens.join(" ");
     } 
-    input.value = tokens.join(" ");
     resultadoExibido = false;
     })
 // end botão .
+
+// start botão de porcentagem
+buttonPorcentagem.addEventListener("click", () => {
+    tokens = input.value.trim().split(" ")
+    currentToken = tokens[tokens.length - 1]
+    const porcentagem = buttonPorcentagem.textContent
+    if (!currentToken.includes(porcentagem) && !isNaN(currentToken)) {
+        currentToken += porcentagem
+        tokens[tokens.length - 1] = currentToken
+        input.value = tokens.join(" ")
+        console.log("teste")
+    }
+})
+// end botão %
+
+// start botões de ()
+// buttonOpen.addEventListener("click", () => {
+//     tokens = input.value.trim().split(" ")
+//     currentToken = tokens[tokens.length - 1]
+//     currentToken = `(${currentToken})`
+// })
+// end parenteses
