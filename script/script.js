@@ -43,9 +43,24 @@ buttonClear.addEventListener("click", () => {
 // start operadores numéricos + - * /
 buttonOperator.forEach(button => {
     button.addEventListener("click", () => {
-        const operatorValue = button.textContent;
-        input.value += ` ${operatorValue} `;
-        resultadoExibido = false;
+        let tokens = input.value.trim().split(" ");
+        let currentToken = tokens[tokens.length - 1];
+        console.log(currentToken);
+            if (!["+", "-", "×", "÷"].includes(currentToken)) {
+                const operatorValue = button.textContent;
+                tokens.push(` ${operatorValue} `);
+                console.log(currentToken);
+                input.value = tokens.join(" ");
+                resultadoExibido = false;
+            }
+            // Bug de varios operadores consecutivos 2 + + + resolvido.
+            // Como? Coloquei a lógica de transformar o input.value em um array
+            // Separado por espaço, depois fiz uma variável "currentoken" que
+            // seleciona o ultimo elemento do array ( o que está sendo editado )
+            // Após isso, eu verificado caso esse ultimo elemento seja um operador
+            // matemático, se não for eu adiciono um novo elemento no array que possui
+            // o conteúdo de texto do operador, depois atualizo o valor do input com
+            // o array novo, que é deletado pelo joins.
     })
 })
 // end operadores numéricos
