@@ -27,7 +27,7 @@ input.addEventListener("keydown", function(e) {
         // Checando currentToken
         let currentToken = tokens[tokens.length - 1];
         if (tokens.length === 1) {
-            tokens = [0];
+            tokens = ["0"];
         } else {
             console.log(tokens);
             tokens.pop();
@@ -45,7 +45,7 @@ buttonFrog.addEventListener("click", () => {
 // end frog
 
 // Escopo Global
-let tokens = [0];
+let tokens = ["0"];
 
 // start Numbers
 buttonNumber.forEach(button => {
@@ -54,7 +54,7 @@ buttonNumber.forEach(button => {
         const numberValue = button.textContent;
         // Atualizando currentToken
         let currentToken = tokens[tokens.length - 1];
-        if ((tokens.length === 1 && tokens[0] === 0) || resultadoExibido) {
+        if ((tokens.length === 1 && tokens[0] == 0) || resultadoExibido) {
             // Caso seja apenas um 0 no tokens ou o resultado seja exibido.
             tokens[0] = numberValue;
             console.log(tokens);
@@ -77,7 +77,7 @@ buttonBackspace.addEventListener("click", () => {
     // Atualizando currentToken
     let currentToken = tokens[tokens.length - 1];
     if (tokens.length === 1 && currentToken.length === 1) {
-        tokens = [0];
+        tokens = ["0"];
     } else if (currentToken.length > 1) {
         console.log(tokens);
         tokens[tokens.length - 1] = currentToken.slice(0, -1);
@@ -92,7 +92,7 @@ buttonBackspace.addEventListener("click", () => {
 
 buttonClear.addEventListener("click", () => {
     // Zera todos os valores de tokens para um elemento com o valor 0 number
-    tokens = [0];
+    tokens = ["0"];
     input.value = tokens.join(" ");
     pastLog.textContent = "Clean";
 });
