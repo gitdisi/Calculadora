@@ -1,0 +1,57 @@
+@media all and (max-width: 600px) {
+    /* Remove margens/paddings do HTML e BODY */
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    .calculator__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    header div input {
+        width: 100%;               /* 100% do container */
+        font-size: 2rem;
+        margin: 0;
+        padding: 0.25rem 0.5rem;
+        box-sizing: border-box;
+    }
+
+    header {
+        padding: 5px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    header section p {
+        font-size: 0.9rem;
+    }
+
+    main {
+        margin-top: 0.5rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    main section {
+        gap: 0.1rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    main section div {
+        height: 2.5rem;           /* Corrigido */
+        flex: 1;
+    }
+
+    main section div button {
+        font-size: 1rem;
+        padding: 0.2rem;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+    }
+}
