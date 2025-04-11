@@ -44,7 +44,3 @@ Contribuições são bem-vindas! Se desejar melhorar a calculadora ou adicionar 
 ## Licença
 
 Este projeto está licenciado sob a [MIT License](LICENSE).
-
----
-
-Personalize os links e demais informações conforme sua necessidade. Este README oferece uma visão clara sobre o projeto, destacando suas funcionalidades e tecnologias utilizadas, facilitando o entendimento por parte de recrutadores e colaboradores.
