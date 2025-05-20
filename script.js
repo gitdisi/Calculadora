@@ -221,3 +221,14 @@ buttonPorcentagem.addEventListener("click", () => {
     input.value = tokens.join(" ");
 });
 // end botão %
+
+let people = [
+    {name: "GabrRiel", age: 18},
+    {name: "rOsannE", age: 19},
+    {name: "AMAURA", age: 25}
+]
+
+let nomesPadronizados = people.map((p) => {
+    return p.name.toLowerCase()
+})
+console.log(nomesPadronizados)
